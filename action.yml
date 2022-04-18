@@ -1,0 +1,31 @@
+name: 'Set Node Package Version'
+description: 'Sets the current version to a given package.json'
+branding:
+  icon: anchor
+  color: blue
+inputs:
+  file:
+    description: |
+      'The package.json from which to read the version. '
+      'Defaults to package.json.'
+      'Set if you need to read a different file / or different folder.'
+    required: false
+    default: 'package.json'
+  regex:
+    description: |
+      'ECMAScript Regular Expression to parse the version string for verification.'
+      'Defaults to being semver, i.e. "major.minor.patch"'
+      'Set if you to be compatible with a different, non-semver format.'
+    required: false
+    default: '^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)(\.(?<patch>0|[1-9]\d*))?(?:-(?<prerelease>(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<buildmetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+  version:
+    description: |
+      'The semver version to set.'
+      'Version has to be compatible to the provided regex.'
+    required: true
+outputs:
+  version:
+    description: 'Verified and set version string'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
