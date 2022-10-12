@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/KageKirin/set-package-version#readme",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.10.0"
   }
 }
